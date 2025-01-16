@@ -1,2 +1,6 @@
 DATA/
 env/
+.bsp/
+.metals/
+.vscode/
+.scala-build/

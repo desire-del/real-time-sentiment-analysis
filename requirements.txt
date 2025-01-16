@@ -2,7 +2,7 @@ scikit-learn
 nltk
 matplotlib
 seaborn
-kafka
+kafka-python
 dash
 plotly
 transformers
