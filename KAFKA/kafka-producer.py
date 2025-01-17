@@ -4,7 +4,7 @@ import json
 import time
 
 # Configuration du producteur Kafka
-KAFKA_BROKER = 'localhost:9092'  
+KAFKA_BROKER = 'localhost:9094'  
 TOPIC_NAME = 'tweet_topic' 
 
 # Initialiser le producteur Kafka
@@ -19,7 +19,6 @@ def send_csv_to_kafka(csv_file_path):
         reader = csv.DictReader(csv_file)
         for row in reader:
             producer.send(TOPIC_NAME, value=row)
-            print(f"Tweet: {row}")
             time.sleep(3)
 
 

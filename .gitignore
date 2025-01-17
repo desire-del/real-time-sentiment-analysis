@@ -4,3 +4,4 @@ env/
 .metals/
 .vscode/
 .scala-build/
+.*
