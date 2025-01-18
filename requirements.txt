@@ -9,3 +9,8 @@ transformers
 tensorflow
 numpy
 pandas
+torch
+datasets
+torchinfo
+tensorboard
+tweepy

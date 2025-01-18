@@ -70,6 +70,23 @@ services:
       realtime_pipeline:
         ipv4_address: 192.168.1.5
 
+  sentiment-api:
+    build:
+      context: ./ML/app  
+      dockerfile: Dockerfile
+    container_name: sentiment-api
+    hostname: flask-api
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    networks:
+      realtime_pipeline:
+        ipv4_address: 192.168.1.7
+
+
   mongodb:
     image: mongo:6.0
     container_name: mongodb
