@@ -7,7 +7,7 @@ from pymongo import MongoClient
 
 # Connexion à MongoDB
 client = MongoClient("mongodb://localhost:27017/")
-print(client.list_database_names())
+
 db = client["tweetDB"]
 collection = db["tweetCollection"]
 
@@ -15,7 +15,7 @@ collection = db["tweetCollection"]
 def load_data():
     data = list(collection.find())
     df = pd.DataFrame(data)
-    print(df.shape)
+    
     return df
 
 # Créer l'application Dash

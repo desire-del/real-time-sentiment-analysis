@@ -109,7 +109,7 @@ object KafkaSparkConsumer {
       connection.setRequestProperty("Content-Type", "application/json")
       val jsonTweet = s"""{"tweet": "$tweet"}"""
 
-      val out = new DataOutputStream(connection.getOutputStream)  // Ajout de la ligne DataOutputStream
+      val out = new DataOutputStream(connection.getOutputStream)  
       out.writeBytes(jsonTweet)  
       out.flush()
 
