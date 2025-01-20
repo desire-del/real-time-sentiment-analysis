@@ -17,7 +17,7 @@ object KafkaSparkConsumer {
       .getOrCreate()
 
     // Paramètres pour consommer depuis Kafka
-    val kafkaBrokers = "kafka:9092" 
+    val kafkaBrokers = "kafka:9092"
     val topic = "tweet_topic"
 
     // Lecture de Kafka
@@ -41,6 +41,19 @@ object KafkaSparkConsumer {
               get_json_object(col("message"), "$.user").alias("user"))
       .filter(col("tweet").isNotNull)
 
+    // Définir l'UDF pour extraire les hashtags
+    val extractHashtagsUdf: UserDefinedFunction = udf((tweet: String) => {
+      if (tweet != null) {
+        tweet.split(" ").filter(word => word.startsWith("#")).toSeq
+      } else {
+        Seq.empty[String]
+      }
+    })
+
+    // Extraction des hashtags avant de nettoyer le tweet
+    val tweetWithHashtagsStream = tweetStream
+      .withColumn("hashtags", extractHashtagsUdf(col("tweet")))
+
     // Définir l'UDF pour nettoyer un tweet
     val cleanTweetUdf: UserDefinedFunction = udf((tweet: String) => {
       if (tweet != null) {
@@ -57,36 +70,23 @@ object KafkaSparkConsumer {
       }
     })
 
-    // Définir l'UDF pour extraire les hashtags
-    val extractHashtagsUdf: UserDefinedFunction = udf((tweet: String) => {
-      if (tweet != null) {
-        tweet.split(" ").filter(word => word.startsWith("#")).toSeq
-      } else {
-        Seq.empty[String]
-      }
-    })
-
-    // Nettoyage du tweet
-    val cleanedTweetStream = tweetStream
-      .select(cleanTweetUdf(col("tweet")).alias("cleaned_tweet"),
-              col("followers_count"),
-              col("retweet_count"),
-              col("favorite_count"),
-              col("user"),
-              col("created_at"))
+    // Nettoyage du tweet après avoir extrait les hashtags
+    val cleanedTweetStream = tweetWithHashtagsStream
+      .withColumn("cleaned_tweet", cleanTweetUdf(col("tweet")))
+      .withColumn("followers_count", col("followers_count"))
+      .withColumn("retweet_count", col("retweet_count"))
+      .withColumn("favorite_count", col("favorite_count"))
+      .withColumn("user", col("user"))
+      .withColumn("created_at", col("created_at"))
 
     // Extraction du sentiment
     val tweetWithSentimentStream = cleanedTweetStream
       .withColumn("sentiment", udf(getSentiment _).apply(col("cleaned_tweet")))
 
-    // Extraction des hashtags
-    val tweetWithHashtagsStream = tweetWithSentimentStream
-      .withColumn("hashtags", extractHashtagsUdf(col("cleaned_tweet")))
-
     // Calcul des statistiques d'engagement
-    val tweetWithEngagementStream = tweetWithHashtagsStream
-      .withColumn("engagement", col("followers_count") * 
-                                  (col("sentiment") === "positive").cast("int") * 
+    val tweetWithEngagementStream = tweetWithSentimentStream
+      .withColumn("engagement", col("followers_count") *
+                                  (col("sentiment") === "positive").cast("int") *
                                   (col("favorite_count") + col("retweet_count")))
 
     // Enregistrement des résultats dans MongoDB

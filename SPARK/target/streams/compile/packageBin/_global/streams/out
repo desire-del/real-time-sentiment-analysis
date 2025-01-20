@@ -1,0 +1,19 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\spark_2.12-0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaSparkConsumer$$typecreator1$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\classes\KafkaSparkConsumer$$typecreator1$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaSparkConsumer$$typecreator2$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\classes\KafkaSparkConsumer$$typecreator2$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaSparkConsumer$$typecreator3$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\classes\KafkaSparkConsumer$$typecreator3$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaSparkConsumer$$typecreator4$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\classes\KafkaSparkConsumer$$typecreator4$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaSparkConsumer$$typecreator5$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\classes\KafkaSparkConsumer$$typecreator5$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaSparkConsumer$$typecreator6$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\classes\KafkaSparkConsumer$$typecreator6$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaSparkConsumer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\classes\KafkaSparkConsumer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaSparkConsumer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\souss\Document\realtime-sentiment-analysis\SPARK\target\scala-2.12\classes\KafkaSparkConsumer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
