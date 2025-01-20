@@ -73,7 +73,7 @@ python dashboard.py
 ```
 
 Le tableau de bord sera accessible à l'adresse `http://localhost:8050`.
-![dashbord du Projet](./IMG/dashbord.png)
+![dashbord du Projet](IMG/dashboard.png)
 
 ### 7. Surveiller les Résultats dans MongoDB
 Les tweets traités sont enregistrés dans la collection MongoDB `tweetCollection`. Vous pouvez les consulter en accédant à MongoDB :
