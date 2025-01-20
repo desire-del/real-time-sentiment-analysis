@@ -5,7 +5,7 @@ Ce projet implémente une architecture Big Data pour analyser les tendances en t
 ## Architecture du Projet
 L'architecture globale du projet est illustrée ci-dessous :
 
-![Architecture du Projet](<insérer_chemin_image>)
+![Architecture du Projet](IMG/arch.jpg)
 
 - **Kafka** : Récupère les tweets et les diffuse sur un topic.
 - **Spark Streaming** : Traite les tweets en temps réel pour extraire les tendances.
@@ -41,7 +41,8 @@ python kafka-producer.py
 Compilez le code Scala et créez un fichier JAR pour l'application Spark Streaming :
 ```bash
 cd SPARK
-sbt clean package
+sbt clean compile
+sbt package
 ```
 
 Cela générera un fichier JAR dans le répertoire `target/scala-3.x/`. Renommez-le en `spark_2.12-0.1.jar`.
@@ -68,10 +69,11 @@ spark-submit \
 Accédez à votre tableau de bord interactif pour visualiser les tendances en temps réel :
 ```bash
 cd DASHBOARD
-python app.py
+python dashboard.py
 ```
 
 Le tableau de bord sera accessible à l'adresse `http://localhost:8050`.
+![dashbord du Projet](./IMG/dashbord.png)
 
 ### 7. Surveiller les Résultats dans MongoDB
 Les tweets traités sont enregistrés dans la collection MongoDB `tweetCollection`. Vous pouvez les consulter en accédant à MongoDB :
